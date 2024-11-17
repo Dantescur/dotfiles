@@ -1,0 +1,76 @@
+{
+  "vue_data": {
+    "prefix": "pinia-store",
+    "body": [
+export const useAuthStore = defineStore('auth', () => {
+
+  const user = ref<User | null>(null)
+  const token = ref(localStorage.getItem('token'))
+
+  async function api(method: string, url: string, payload?: Payload) {
+    const options: RequestInit = {
+        method,
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token.value}`
+        },
+    }
+
+    if (method !== 'GET' && method !== 'HEAD') {
+        options.body = JSON.stringify(payload)
+    }
+
+    const response = await fetch(`http://localhost:3333${url}`, options)
+
+    return response.json()
+  }
+
+  function authenticate(result: User) {
+    token.value = result.token
+    localStorage.setItem('token', token.value)
+  }
+
+  async function login(payload: Payload) {
+    const result = await api('POST', '/login', payload)
+    authenticate(result)
+}
+
+async function register(payload: Payload) {
+    const result = await api('POST', '/register', payload)
+    authenticate(result)
+}
+
+async function logout() {
+    await api('DELETE', '/logout')
+    token.value = null
+    user.value = null
+    localStorage.removeItem('token')
+}
+
+async function me() {
+    const result = await api('GET', '/me')
+    user.value = result.user
+    return user.value
+}
+
+
+
+
+  return {
+    // Properties
+    user,
+
+    // Getters
+    
+
+    // Actions
+    me,
+    login,
+    logout,
+    register
+  }
+})
+    ],
+    "description": "Composition API structure Pinia store"
+  }
+}

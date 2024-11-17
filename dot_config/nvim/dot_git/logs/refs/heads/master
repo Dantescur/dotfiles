@@ -1,0 +1,5 @@
+0000000000000000000000000000000000000000 6cc6ec5b8571fb1a3713f4521723796245e123f1 daniel <daniel@thedaniweb.eu.org> 1718563311 -0400	commit (initial): A .gitignore
+6cc6ec5b8571fb1a3713f4521723796245e123f1 6e5bad883367d0844f8fdf2e9c9feb7e97a44fa8 daniel <daniel@thedaniweb.eu.org> 1718742572 -0400	commit: M lazy-lock.json
+6e5bad883367d0844f8fdf2e9c9feb7e97a44fa8 ca530d62e521df6de57712097845029a0bbd4f8a daniel <daniel@thedaniweb.eu.org> 1718744334 -0400	commit: M lazy-lock.json
+ca530d62e521df6de57712097845029a0bbd4f8a 16c527454f769daa44db63749fb6783e6532aa4a daniel <daniel@thedaniweb.eu.org> 1719118732 -0400	commit: touches
+16c527454f769daa44db63749fb6783e6532aa4a da5103a84bd7c6d735ead1a056d9bcf11bb1d38e daniel <daniel@thedaniweb.eu.org> 1719726633 -0400	commit: nh closing highlight, jk exit insert mode and added nvim-surround

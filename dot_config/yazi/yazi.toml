@@ -1,0 +1,37 @@
+[manager]
+show_hidden = true
+
+[preview]
+wrap = "yes"
+
+[[plugin.prepend_fetchers]]
+id   = "git"
+name = "*"
+run  = "git"
+
+[[plugin.prepend_fetchers]]
+id   = "git"
+name = "*/"
+run  = "git"
+
+[[plugin.prepend_previewers]]
+mime = "application/{,g}zip"
+run  = "lsar"
+
+[[plugin.prepend_previewers]]
+mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}"
+run  = "lsar"
+
+[[plugin.prepend_previewers]]
+name = "*.md"
+run = "glow"
+
+[[plugin.prepend_previewers]]
+mime = "video/*"
+run = "video-ffmpeg"
+
+
+[plugin]
+prepend_preloaders = [
+  { mime = "video/*", run = "video-ffmpeg" },
+]

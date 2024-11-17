@@ -1,0 +1,59 @@
+[[manager.prepend_keymap]]
+on   = "!"
+run  = 'shell "$SHELL" --block --confirm'
+desc = "Open shell here"
+
+[[manager.prepend_keymap]]
+on = [ "l" ]
+run = "plugin bypass --args=smart_enter"
+desc = "Open a file, or recursively enter child directory, skipping children with only a single subdirectory"
+# [[manager.prepend_keymap]]
+# on   = "l"
+# run  = "plugin --sync smart-enter"
+# desc = "Enter the child directory, or open the file"
+
+[[manager.prepend_keymap]]
+on   = "p"
+run  = "plugin --sync smart-paste"
+desc = "Paste into the hovered directory or CWD"
+
+[[manager.prepend_keymap]]
+on = [ "g", "r" ]
+run = '''
+	shell 'ya pub dds-cd --str "$(git rev-parse --show-toplevel)"' --confirm
+'''
+
+[[manager.prepend_keymap]]
+on  = "<C-e>"
+run = '''
+	shell --confirm '
+		paths=$(for p in "$@"; do echo "$p"; done | paste -s -d,)
+		quoted="'\'$paths\''"
+		thunderbird -compose "attachment=$quoted"
+	'
+'''
+
+[[manager.prepend_keymap]]
+on   = "T"
+run  = "plugin --sync hide-preview"
+desc = "Hide or show preview"
+
+[[manager.prepend_keymap]]
+on = [ "L" ]
+run = "plugin bypass"
+desc = "Recursively enter child directory, skipping children with only a single subdirectory"
+
+[[manager.prepend_keymap]]
+on = [ "H" ]
+run = "plugin bypass --args=reverse"
+desc = "Recursively enter parent directory, skipping parents with only a single subdirectory"
+
+[[manager.prepend_keymap]]
+on   = [ "g", "i" ]
+run  = "plugin lazygit"
+desc = "run lazygit"
+
+[[manager.prepend_keymap]]
+on   = [ "c", "a" ]
+run  = "plugin compress"
+desc = "Archive selected files"
